@@ -2,13 +2,11 @@ import React, { useContext } from "react";
 
 import { ModalContext } from "../modalContext";
 import tablesStore from "../store";
+import { isEmpty } from "../helpers";
 
 const Row = ({ data, tableId }) => {
     const modalRef = useContext(ModalContext);
 
-    const isEmpty = (obj) => {
-        return Object.keys(obj).length === 0;
-    }
     const editRow = () => {
         modalRef?.current?.toggleModal({
             show: true,

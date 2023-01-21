@@ -29,12 +29,12 @@ const Modal = forwardRef(({ test }, ref) => {
     return (
         <>
             <div
-                class="modal"
+                className="modal"
                 id="modal"
                 ref={modalRef}
                 style={{ display: `${visible ? '' : 'none'}` }}
             >
-                <Form data={formData.data} closeModal={onClose} tableId={formData.tableId} />
+                <Form data={formData.data ? formData.data : {}} closeModal={onClose} tableId={formData.tableId} />
             </div>
             <div className="layout" style={{ display: `${visible ? 'block' : 'none'}` }} onClick={onClose} />
         </>

@@ -1,3 +1,4 @@
 Table generator project.
 
-To start project run command "npm run start"
+Install dependencies by running "npm install".
+To start project run command "npm run start".

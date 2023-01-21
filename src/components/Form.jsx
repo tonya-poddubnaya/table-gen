@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import tablesStore from "../store";
+import { isEmpty } from "../helpers";
 
 const Form = ({ data, closeModal, tableId }) => {
     const initialFields = useMemo(() => {
@@ -17,7 +18,7 @@ const Form = ({ data, closeModal, tableId }) => {
     const [fields, setFields] = useState({})
 
     useEffect(() => {
-        setFields(data ? data : initialFields)
+        setFields(isEmpty(data) ? data : initialFields)
     }, [data, initialFields])
 
     const changeValue = (key, value) => {
@@ -55,7 +56,7 @@ const Form = ({ data, closeModal, tableId }) => {
                 <input
                     type="text"
                     placeholder="Name"
-                    value={fields.name}
+                    value={fields.name ? fields.name : ''}
                     onChange={(e) => {
                         const value = e.target.value;
                         changeValue('name', value)
@@ -64,7 +65,7 @@ const Form = ({ data, closeModal, tableId }) => {
                 <input
                     type="text"
                     placeholder="Surname"
-                    value={fields.surname}
+                    value={fields.surname ? fields.surname : ''}
                     onChange={(e) => {
                         const value = e.target.value;
                         changeValue('surname', value)
@@ -73,7 +74,7 @@ const Form = ({ data, closeModal, tableId }) => {
                 <input
                     type="number"
                     placeholder="Age"
-                    value={fields.age}
+                    value={fields.age ? fields.age : ''}
                     onChange={(e) => {
                         const value = e.target.value;
                         changeValue('age', value)
